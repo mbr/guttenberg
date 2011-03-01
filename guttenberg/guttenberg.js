@@ -38,7 +38,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		localStorage.setItem('ids', JSON.stringify(ids));
 	}
 
-	clipboard.value = '"' + request.selection + '" [source][' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"';
+	clipboard.value = '"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"';
 	clipboard.focus();
 	clipboard.select();
 	document.execCommand('Copy');
