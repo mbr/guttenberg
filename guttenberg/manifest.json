@@ -1,7 +1,8 @@
 {
   "name": "Guttenberg Copy&Paste&Cite",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Copy&paste with footnotes.",
+  "update_url": "https://github.com/mbr/guttenberg/raw/master/updates.xml",
 
   "background_page": "background.html",
   "permissions": ["tabs", "http://*/", "https://*/"],
