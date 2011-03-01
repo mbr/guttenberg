@@ -1,7 +1,33 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	console.log('request from outside', request, sender, sendResponse);
 	var clipboard = document.getElementById('myclipboard');
-	var footnote_id  = 'bla';
+
+	// calculate id
+	var footnote_id = 'undef'
+	if (request.url in refs) footnote_id = refs[request.url];
+	else {
+		// we need to generate an idea for our ref!
+		var domain = parseUri(request.url).host.split('.');
+		var name;
+
+		var i = 0;
+		var text = 'undef';
+		do {
+			if (text.length <= domain[i].length) text = domain[i];
+			++i;
+		} while(i < domain.length);
+		text = text.substring(0,4)
+
+		var i = 0;
+		var cand;
+		do {
+			cand = text + i;
+			++i;
+		} while(cand in refs);
+
+		footnote_id = cand;
+	}
+
 	clipboard.value = '"' + request.selection + '" [source][' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"';
 	clipboard.focus();
 	clipboard.select();
