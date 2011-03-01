@@ -1,0 +1,7 @@
+Lost track of your sources? Guttenberg is an extension written for Google Chrome. It allows you to select text on a webpage and copy it to the clipboard. Quotation marks and a footnote referring the source will automagically be added.
+
+Get that Ph.D. and keep it, too!
+
+Note: After installing the extension, reload pages that you had open for it to work.
+
+If you are having trouble with the Google Extension gallery, you can download this extension as well from https://github.com/mbr/guttenberg.
