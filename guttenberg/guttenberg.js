@@ -1,5 +1,9 @@
+var refs = {};
+var ids = {};
+if (localStorage.getItem('refs')) refs = JSON.parse(localStorage.getItem('refs'));
+if (localStorage.getItem('ids')) refs = JSON.parse(localStorage.getItem('ids'));
+
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-	console.log('request from outside', request, sender, sendResponse);
 	var clipboard = document.getElementById('myclipboard');
 
 	// calculate id
@@ -23,9 +27,15 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		do {
 			cand = text + i;
 			++i;
-		} while(cand in refs);
+		} while(cand in ids);
 
 		footnote_id = cand;
+		ids[cand] = true; // store id
+
+		// store the id
+		refs[request.url] = footnote_id;
+		localStorage.setItem('refs', JSON.stringify(refs));
+		localStorage.setItem('ids', JSON.stringify(ids));
 	}
 
 	clipboard.value = '"' + request.selection + '" [source][' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"';
