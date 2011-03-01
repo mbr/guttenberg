@@ -1,7 +1,7 @@
 var refs = {};
 var ids = {};
 if (localStorage.getItem('refs')) refs = JSON.parse(localStorage.getItem('refs'));
-if (localStorage.getItem('ids')) refs = JSON.parse(localStorage.getItem('ids'));
+if (localStorage.getItem('ids')) ids = JSON.parse(localStorage.getItem('ids'));
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	var clipboard = document.getElementById('myclipboard');
