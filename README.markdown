@@ -6,4 +6,4 @@ Get that Ph.D. and keep it, too!
 
 How to install
 ==============
-To install, simply click on this link: <https://github.com/downloads/mbr/guttenberg/guttenberg.crx> or select "Latest Version" from the big "Download" button above.
+To install, simply click on this link: <https://github.com/downloads/mbr/guttenberg/guttenberg.crx> or select "guttenberg.crx" from the big "Download" button above.
