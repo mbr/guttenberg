@@ -45,7 +45,7 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 }
 );
 
-chrome.browserAction.onClicked.addListener(function(tab) {
+//chrome.browserAction.onClicked.addListener(function(tab) {
 	// run script in tab context
-	chrome.tabs.executeScript(tab.id, {'file': 'guttencopy.js'});
-});
+//	chrome.tabs.executeScript(tab.id, {'file': 'guttencopy.js'});
+//});
