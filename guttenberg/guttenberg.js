@@ -7,15 +7,15 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	var clipboard = document.getElementById('myclipboard');
 
 	// calculate id
-	var footnote_id = 'undef'
+	var footnote_id;
 	if (request.url in refs) footnote_id = refs[request.url];
 	else {
-		// we need to generate an idea for our ref!
+		// we need to generate an id for our ref!
 		var domain = parseUri(request.url).host.split('.');
 		var name;
 
 		var i = 0;
-		var text = 'undef';
+		var text = '';
 		do {
 			if (text.length <= domain[i].length) text = domain[i];
 			++i;
