@@ -13,39 +13,42 @@ function copyText(text) {
 }
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-	// calculate id
-	var footnote_id;
-	if (request.url in refs) footnote_id = refs[request.url];
+	if ('normalcopy' == request.action) copyText(request.selection);
 	else {
-		// we need to generate an id for our ref!
-		var domain = parseUri(request.url).host.split('.');
-		var name;
+		// calculate id
+		var footnote_id;
+		if (request.url in refs) footnote_id = refs[request.url];
+		else {
+			// we need to generate an id for our ref!
+			var domain = parseUri(request.url).host.split('.');
+			var name;
 
-		var i = 0;
-		var text = '';
-		do {
-			if (text.length <= domain[i].length) text = domain[i];
-			++i;
-		} while(i < domain.length);
-		text = text.substring(0,4)
+			var i = 0;
+			var text = '';
+			do {
+				if (text.length <= domain[i].length) text = domain[i];
+				++i;
+			} while(i < domain.length);
+			text = text.substring(0,4)
 
-		var i = 0;
-		var cand;
-		do {
-			cand = text + i;
-			++i;
-		} while(cand in ids);
+			var i = 0;
+			var cand;
+			do {
+				cand = text + i;
+				++i;
+			} while(cand in ids);
 
-		footnote_id = cand;
-		ids[cand] = true; // store id
+			footnote_id = cand;
+			ids[cand] = true; // store id
 
-		// store the id
-		refs[request.url] = footnote_id;
-		localStorage.setItem('refs', JSON.stringify(refs));
-		localStorage.setItem('ids', JSON.stringify(ids));
+			// store the id
+			refs[request.url] = footnote_id;
+			localStorage.setItem('refs', JSON.stringify(refs));
+			localStorage.setItem('ids', JSON.stringify(ids));
+		}
+
+		copyText('"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"');
 	}
-
-	copyText('"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"');
 }
 );
 
