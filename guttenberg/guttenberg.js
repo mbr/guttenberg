@@ -3,9 +3,16 @@ var ids = {};
 if (localStorage.getItem('refs')) refs = JSON.parse(localStorage.getItem('refs'));
 if (localStorage.getItem('ids')) ids = JSON.parse(localStorage.getItem('ids'));
 
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+function copyText(text) {
+	console.log('Copying',text,'to clipboard');
 	var clipboard = document.getElementById('myclipboard');
+	clipboard.value = text;
+	clipboard.focus();
+	clipboard.select();
+	document.execCommand('Copy');
+}
 
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	// calculate id
 	var footnote_id;
 	if (request.url in refs) footnote_id = refs[request.url];
@@ -38,9 +45,6 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 		localStorage.setItem('ids', JSON.stringify(ids));
 	}
 
-	clipboard.value = '"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"';
-	clipboard.focus();
-	clipboard.select();
-	document.execCommand('Copy');
+	copyText('"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"');
 }
 );
