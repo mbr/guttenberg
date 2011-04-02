@@ -1,3 +1,5 @@
+console.log('Guttencopy active');
+
 document.body.addEventListener("copy", function(event) {
 	var sel = window.getSelection();
 	chrome.extension.sendRequest({
