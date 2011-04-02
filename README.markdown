@@ -6,6 +6,6 @@ Get that Ph.D. and keep it, too!
 
 How to install
 ==============
-To install, simply click on this link: <https://github.com/downloads/mbr/guttenberg/guttenberg.crx> or select "guttenberg.crx" from the big "Download" button above.
+Install it from the Chrome App Store: <https://chrome.google.com/extensions/detail/gclcaahfkiaicchpdenbogmchbhfbnok>
 
 After the installation, the extension will be active for all tabs you open after that - so reload, if you want to use it on a tab you already had open. Then, simply copy something to the clipboard and paste it elsewhere.
