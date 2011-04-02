@@ -14,7 +14,7 @@
   "incognito": "split",
 
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
+    "matches": ["*://*/*"],
     "js": ["guttencopy.js"]
   }]
 }
