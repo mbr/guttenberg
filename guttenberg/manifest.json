@@ -10,7 +10,7 @@
   },
 
   "background_page": "background.html",
-  "permissions": ["tabs", "http://*/", "https://*/"],
+  "permissions": ["tabs", "contextMenus", "http://*/", "https://*/"],
   "incognito": "split",
 
   "content_scripts": [{

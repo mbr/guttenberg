@@ -48,3 +48,17 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	copyText('"' + request.selection + '" [' + footnote_id + ']\n\n[' + footnote_id + ']: ' + request.url + ' ' + '"' + request.title + '"');
 }
 );
+
+// set up context menu
+var ctxMenuEntry = chrome.contextMenus.create({
+	type: 'normal',
+	title: 'Copy without footnote',
+	contexts: ['selection'],
+	onclick: function(info, tab) {
+		chrome.tabs.sendRequest(tab.id, {
+			action: 'normalCopy',
+		}, function(response) {
+			copyText(response.selection);
+		});
+	}
+});
