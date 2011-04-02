@@ -4,7 +4,7 @@ if (localStorage.getItem('refs')) refs = JSON.parse(localStorage.getItem('refs')
 if (localStorage.getItem('ids')) ids = JSON.parse(localStorage.getItem('ids'));
 
 function copyText(text) {
-	console.log('Copying',text,'to clipboard');
+	//console.log('Copying',text,'to clipboard');
 	var clipboard = document.getElementById('myclipboard');
 	clipboard.value = text;
 	clipboard.focus();
