@@ -44,8 +44,3 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	document.execCommand('Copy');
 }
 );
-
-//chrome.browserAction.onClicked.addListener(function(tab) {
-	// run script in tab context
-//	chrome.tabs.executeScript(tab.id, {'file': 'guttencopy.js'});
-//});
